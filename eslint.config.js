@@ -12,8 +12,17 @@ export default [
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
+  ...pluginVue.configs['flat/recommended'],
   pluginPrettierRecommended,
+  {
+    files: ['*.vue', '**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+      },
+    },
+  },
   {
     rules: {
       'prettier/prettier': 'error',
@@ -21,6 +30,6 @@ export default [
     },
   },
   {
-    ignores: ['src/*.d.ts', 'src-tauri/**/*'],
+    ignores: ['src/*.d.ts', 'src-tauri/**/*', 'src/service/emby/**/*'],
   },
 ];
