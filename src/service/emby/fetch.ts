@@ -6,8 +6,9 @@ export async function embyFetch(input: RequestInfo | URL, init?: RequestInit) {
 
   result.json = async () => {
     const raw = await result.text();
+    console.log('raw', raw);
     return JSON.parse(raw, (_, value) => {
-      if (typeof value === 'object' && value !== null) {
+      if (!Array.isArray(value) && typeof value === 'object' && value !== null) {
         return mapKeys(value, (_, key) => camelCase(key));
       } else {
         return value;
