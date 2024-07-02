@@ -3,10 +3,11 @@ import autoprefixer from 'autoprefixer';
 import path from 'path';
 import tailwind from 'tailwindcss';
 import { defineConfig } from 'vite';
+import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [vue()],
+  plugins: [vue(), vueDevTools()],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
